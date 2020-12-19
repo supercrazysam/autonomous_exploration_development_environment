@@ -73,4 +73,6 @@
     <param name="maxIncl" value="$(arg maxIncl)" />
   </node>
 
+  <node pkg="robot_state_publisher" name="robot_state_publisher" type="robot_state_publisher" />
+  <node pkg="tf" type="static_transform_publisher" name="vehicle2baselink_broadcaster" args="0 0 0 0 0 0 1 vehicle base_link 100" /> 
 </launch>
