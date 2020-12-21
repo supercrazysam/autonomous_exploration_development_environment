@@ -15,8 +15,11 @@
          </animation>
 
 
-   
+      <!--
       <plugin name="ped_0_actor_plugin" filename="libActorPlugin.so">
+      -->
+      <plugin name="ped_0_actor_plugin" filename="libped_plugin.so">
+
 
         <target_weight>1.15</target_weight>
         <obstacle_weight>1.8</obstacle_weight>

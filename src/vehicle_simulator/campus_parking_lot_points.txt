@@ -37,6 +37,10 @@ middle down
       y: -53.43491745
 
 
+create a parking lot   frame from map
+rosrun tf2_ros static_transform_publisher 0 0 0 0 0 -0.5735764 0.819152  map parking
+
+
 [ [-13.5708026886,-68.0989227295] , [-18.8866176605,-52.6750450134] , [7.21017408371,-60.8674201965] , [2.67492055893,-45.3540534973] ]
 
 bbox at map frame 
