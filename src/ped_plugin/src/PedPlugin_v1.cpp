@@ -22,12 +22,7 @@
 
 #include <ped_plugin/PedPlugin.h>
 
-#include <ros/ros.h>
-
 //include "plugins/PedPlugin.hh"
-
-#include <tuple>
-#include <ignition/msgs.hh>
 
 using namespace gazebo;
 GZ_REGISTER_MODEL_PLUGIN(PedPlugin)
@@ -96,11 +91,6 @@ void PedPlugin::Reset()
   else
     this->target = ignition::math::Vector3d(0, -5, 1.2138);
 
- this->actor->SetWorldPose(
-            ignition::math::Pose3d(
-            this->target,
-            ignition::math::Quaterniond(0, 0, 0)), false, false );
-
   auto skelAnims = this->actor->SkeletonAnimations();
   if (skelAnims.find(WALKING_ANIMATION) == skelAnims.end())
   {
@@ -117,86 +107,14 @@ void PedPlugin::Reset()
   }
 }
 
-
-std::tuple<double, double> calculate( double x_min, double x_max, double y_min, double y_max )
-{
-   
-
-    double angle_in_rad = (90-70.70995330810547) * (3.14159265359 / 180);
-
-    double origin_x = x_min;
-    double origin_y = y_min;
-
-    double pos_x = ignition::math::Rand::DblUniform(x_min,x_max);
-    double pos_y = ignition::math::Rand::DblUniform(y_min,y_max);
-
-    double processed_x = origin_x + cos(angle_in_rad) * (pos_x - origin_x) - sin(angle_in_rad) * (pos_y - origin_y);
-    double processed_y = origin_y + sin(angle_in_rad) * (pos_x - origin_x) + cos(angle_in_rad) * (pos_y - origin_y);
-
-    return  std::make_tuple( processed_x, processed_y);
-}
-
-std::tuple<double, double> check_bound( double pos_x, double pos_y  )
-{
-   
-
-    double angle_in_rad = (90-70.70995330810547) * (3.14159265359 / 180);  //rotate this angle to become parking lot frame
-    double angle_in_rad_to_map = -angle_in_rad;  //rotate this angle to turn parking lot frame into map frame
-
-    //-13.0, 8.0, -67.0, -52.0
-    
-    double x_min = -13.0;
-    double x_max =   8.0;
-    double y_min =  -67.0;
-    double y_max =  -52.0;
-
-    double origin_x = x_min; //x_min;
-    double origin_y = y_min; //y_min;
-
-    double processed_x = origin_x + cos(angle_in_rad_to_map) * (pos_x - origin_x) - sin(angle_in_rad_to_map) * (pos_y - origin_y);
-    double processed_y = origin_y + sin(angle_in_rad_to_map) * (pos_x - origin_x) + cos(angle_in_rad_to_map) * (pos_y - origin_y);
-
-    if (processed_x > x_max)
-       { processed_x = x_max; }
-    else if (processed_x < x_min)
-       { processed_x = x_min; }
-
-    if (processed_y > y_max)
-       { processed_y = y_max; }
-    else if (processed_y < y_min)
-       { processed_y = y_min; }    
-
-    return  std::make_tuple( processed_x, processed_y);
-}
-
 /////////////////////////////////////////////////
 void PedPlugin::ChooseNewTarget()
 {
-
-   ROS_INFO("Start enter ChooseNewTarget()");
-    
   ignition::math::Vector3d newTarget(this->target);
-    
-   
-   
   while ((newTarget - this->target).Length() < 2.0)
   {
-
-    ROS_INFO("PICKING");
-    
-    double x,y;
-    //std::tie(x,y) = calculate( -13.0, 8.0, -67.0, -52.0 );
-    std::tie(x,y) = calculate( -12.5, 7.5, -66.5, -51.5 );
-    newTarget.X(x);
-    newTarget.Y(y);
-
-
-      ROS_INFO("Hello World!");
-      ROS_INFO("X:");
-      ROS_INFO("%f", x);
-      ROS_INFO("Y:");
-      ROS_INFO("%f", y);
-    
+    newTarget.X(ignition::math::Rand::DblUniform(-3, 3.5));
+    newTarget.Y(ignition::math::Rand::DblUniform(-10, 2));
 
     for (unsigned int i = 0; i < this->world->ModelCount(); ++i)
     {
@@ -206,8 +124,6 @@ void PedPlugin::ChooseNewTarget()
       {
         newTarget = this->target;
         break;
-
-        ROS_INFO("PICKING DONE!!!!!!!!!!!!");
       }
     }
   }
@@ -252,17 +168,10 @@ void PedPlugin::OnUpdate(const common::UpdateInfo &_info)
 
   double distance = pos.Length();
 
-      //ROS_INFO("On update!");
-
-
-
   // Choose a new target position if the actor has reached its current
   // target.
-  ROS_INFO("distance");
-  ROS_INFO("%f", distance);
   if (distance < 0.3)
   {
-    ROS_INFO("distance < 0.3!");
     this->ChooseNewTarget();
     pos = this->target - pose.Pos();
   }
@@ -290,32 +199,10 @@ void PedPlugin::OnUpdate(const common::UpdateInfo &_info)
   }
 
   // Make sure the actor stays within bounds
-  //pose.Pos().X(std::max(-3.0, std::min(3.5, pose.Pos().X())));
-  //pose.Pos().Y(std::max(-10.0, std::min(2.0, pose.Pos().Y())));
-  //pose.Pos().Z(1.2138);
-
-
-    //ROS_INFO("Check within bound!");
-
-      ROS_INFO("target_X:");
-      ROS_INFO("%f", this->target.X());
-      ROS_INFO("target_Y:");
-      ROS_INFO("%f", this->target.Y());
-
-      ROS_INFO("X:");
-      ROS_INFO("%f", pose.Pos().X());
-      ROS_INFO("Y:");
-      ROS_INFO("%f", pose.Pos().Y());
-
-  // Make sure the actor stays within bounds
-  //double x,y;
-  //std::tie(x,y) = check_bound( pose.Pos().X(), pose.Pos().Y() );
-  //pose.Pos().X(x);
-  //pose.Pos().Y(y);
-
+  pose.Pos().X(std::max(-3.0, std::min(3.5, pose.Pos().X())));
+  pose.Pos().Y(std::max(-10.0, std::min(2.0, pose.Pos().Y())));
   pose.Pos().Z(1.2138);
 
-  
   // Distance traveled is used to coordinate motion with the walking
   // animation
   double distanceTraveled = (pose.Pos() -

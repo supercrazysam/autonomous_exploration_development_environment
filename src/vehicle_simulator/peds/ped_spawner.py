@@ -8,8 +8,8 @@ rospy.init_node("insert_object")
 
 initial_pose = Pose()
 initial_pose.position.x = -6.96759986877 #1
-initial_pose.position.y = -57.2897491455 #1 
-initial_pose.position.z = 1 #1
+initial_pose.position.y = -57 #1 
+initial_pose.position.z = 2 #1
 
 f = open('/home/big/catkin_ws/src/autonomous_exploration_development_environment/src/vehicle_simulator/peds/ped.sdf','r')
 sdff = f.read()
