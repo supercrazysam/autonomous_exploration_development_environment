@@ -1,0 +1,244 @@
+<?xml version="1.0" ?>
+<sdf version="1.5">
+
+    <world name=default>
+      <actor name="actor_0">
+         <skin>
+            <filename>moonwalk.dae</filename>
+            <scale>1.0</scale>
+         </skin>
+         <pose>0 0 0 0 0 0</pose>
+         <animation name="walking">
+            <filename>walk.dae</filename>
+            <scale>1</scale>
+            <interpolate_x>true</interpolate_x>
+         </animation>
+
+      <plugin name="ped_0_actor_plugin" filename="libped_plugin.so">
+
+        <target>-13.5708026886 -68.0989227295 1.2138</target>
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <!-- Usage: Modify the set of models that the vector field should
+             ignore when moving the actor -->
+        <ignore_obstacles>
+          <model>map</model>
+        </ignore_obstacles>
+      </plugin>
+      </actor>
+
+      <actor name="actor_1">
+         <skin>
+            <filename>moonwalk.dae</filename>
+            <scale>1.0</scale>
+         </skin>
+         <pose>0 0 0 0 0 0</pose>
+         <animation name="walking">
+            <filename>walk.dae</filename>
+            <scale>1</scale>
+            <interpolate_x>true</interpolate_x>
+         </animation>
+
+      <plugin name="ped_1_actor_plugin" filename="libped_plugin.so">
+
+        <target>-18.8866176605 -52.6750450134 1.2138</target>
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <!-- Usage: Modify the set of models that the vector field should
+             ignore when moving the actor -->
+        <ignore_obstacles>
+          <model>map</model>
+        </ignore_obstacles>
+      </plugin>
+      </actor>
+
+      <actor name="actor_2">
+         <skin>
+            <filename>moonwalk.dae</filename>
+            <scale>1.0</scale>
+         </skin>
+         <pose>0 0 0 0 0 0</pose>
+         <animation name="walking">
+            <filename>walk.dae</filename>
+            <scale>1</scale>
+            <interpolate_x>true</interpolate_x>
+         </animation>
+
+      <plugin name="ped_2_actor_plugin" filename="libped_plugin.so">
+
+        <target>7.21017408371 -60.8674201965 1.2138</target>
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <!-- Usage: Modify the set of models that the vector field should
+             ignore when moving the actor -->
+        <ignore_obstacles>
+          <model>map</model>
+        </ignore_obstacles>
+      </plugin>
+      </actor>
+
+
+      <actor name="actor_3">
+         <skin>
+            <filename>moonwalk.dae</filename>
+            <scale>1.0</scale>
+         </skin>
+         <pose>0 0 0 0 0 0</pose>
+         <animation name="walking">
+            <filename>walk.dae</filename>
+            <scale>1</scale>
+            <interpolate_x>true</interpolate_x>
+         </animation>
+
+      <plugin name="ped_3_actor_plugin" filename="libped_plugin.so">
+
+        <target>2.67492055893 -45.3540534973 1.2138</target>
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <!-- Usage: Modify the set of models that the vector field should
+             ignore when moving the actor -->
+        <ignore_obstacles>
+          <model>map</model>
+        </ignore_obstacles>
+      </plugin>
+      </actor>
+
+      <actor name="actor_4">
+         <skin>
+            <filename>moonwalk.dae</filename>
+            <scale>1.0</scale>
+         </skin>
+         <pose>0 0 0 0 0 0</pose>
+         <animation name="walking">
+            <filename>walk.dae</filename>
+            <scale>1</scale>
+            <interpolate_x>true</interpolate_x>
+         </animation>
+
+      <plugin name="ped_4_actor_plugin" filename="libped_plugin.so">
+
+        <target>-6.96759986877 -57.2897491455 1.2138</target>
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <!-- Usage: Modify the set of models that the vector field should
+             ignore when moving the actor -->
+        <ignore_obstacles>
+          <model>map</model>
+        </ignore_obstacles>
+      </plugin>
+      </actor>
+
+      <actor name="actor_5">
+         <skin>
+            <filename>moonwalk.dae</filename>
+            <scale>1.0</scale>
+         </skin>
+         <pose>0 0 0 0 0 0</pose>
+         <animation name="walking">
+            <filename>walk.dae</filename>
+            <scale>1</scale>
+            <interpolate_x>true</interpolate_x>
+         </animation>
+
+      <plugin name="ped_5_actor_plugin" filename="libped_plugin.so">
+
+        <target>-1.26445353031 -55.0669631958 1.2138</target>
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <!-- Usage: Modify the set of models that the vector field should
+             ignore when moving the actor -->
+        <ignore_obstacles>
+          <model>map</model>
+        </ignore_obstacles>
+      </plugin>
+      </actor>
+
+      <actor name="actor_6">
+         <skin>
+            <filename>moonwalk.dae</filename>
+            <scale>1.0</scale>
+         </skin>
+         <pose>0 0 0 0 0 0</pose>
+         <animation name="walking">
+            <filename>walk.dae</filename>
+            <scale>1</scale>
+            <interpolate_x>true</interpolate_x>
+         </animation>
+
+      <plugin name="ped_6_actor_plugin" filename="libped_plugin.so">
+
+        <target>-13.4524078369 -59.623374939 1.2138</target>
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <!-- Usage: Modify the set of models that the vector field should
+             ignore when moving the actor -->
+        <ignore_obstacles>
+          <model>map</model>
+        </ignore_obstacles>
+      </plugin>
+      </actor>
+
+      <actor name="actor_7">
+         <skin>
+            <filename>moonwalk.dae</filename>
+            <scale>1.0</scale>
+         </skin>
+         <pose>0 0 0 0 0 0</pose>
+         <animation name="walking">
+            <filename>walk.dae</filename>
+            <scale>1</scale>
+            <interpolate_x>true</interpolate_x>
+         </animation>
+
+      <plugin name="ped_7_actor_plugin" filename="libped_plugin.so">
+
+        <target>-4.78709411621 -61.093372345 1.2138</target>
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <!-- Usage: Modify the set of models that the vector field should
+             ignore when moving the actor -->
+        <ignore_obstacles>
+          <model>map</model>
+        </ignore_obstacles>
+      </plugin>
+      </actor>
+
+      <actor name="actor_8">
+         <skin>
+            <filename>moonwalk.dae</filename>
+            <scale>1.0</scale>
+         </skin>
+         <pose>0 0 0 0 0 0</pose>
+         <animation name="walking">
+            <filename>walk.dae</filename>
+            <scale>1</scale>
+            <interpolate_x>true</interpolate_x>
+         </animation>
+
+      <plugin name="ped_8_actor_plugin" filename="libped_plugin.so">
+
+        <target>-8.06304550171 -53.43491745 1.2138</target>
+        <target_weight>1.15</target_weight>
+        <obstacle_weight>1.8</obstacle_weight>
+        <animation_factor>5.1</animation_factor>
+        <!-- Usage: Modify the set of models that the vector field should
+             ignore when moving the actor -->
+        <ignore_obstacles>
+          <model>map</model>
+        </ignore_obstacles>
+      </plugin>
+      </actor>
+
+
+
+
+   <world/>
+</sdf>
